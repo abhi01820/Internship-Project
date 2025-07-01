@@ -5,6 +5,9 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import StatusChip from "./StatusChip";
+
+// Types
 
 type Employee = {
   id: number;
@@ -23,7 +26,7 @@ const defaultData: Employee[] = [
     name: "Abhij",
     department: "Engineering",
     role: "Frontend Developer",
-    status: "Active",
+    status: "In-process",
     joiningDate: "2024-01-15",
     location: "Hyderabad",
     email: "abhij@example.com",
@@ -33,7 +36,7 @@ const defaultData: Employee[] = [
     name: "Shekhar",
     department: "Product",
     role: "Product Manager",
-    status: "Inactive",
+    status: "Need to start",
     joiningDate: "2023-06-01",
     location: "Bangalore",
     email: "shekhar@example.com",
@@ -43,7 +46,7 @@ const defaultData: Employee[] = [
     name: "Vinoothna",
     department: "Design",
     role: "UX Designer",
-    status: "Active",
+    status: "Complete",
     joiningDate: "2023-09-10",
     location: "Delhi",
     email: "vino@example.com",
@@ -67,6 +70,7 @@ const columns = [
   }),
   columnHelper.accessor("status", {
     header: "Status",
+    cell: (info) => <StatusChip label={info.getValue()} />,
   }),
   columnHelper.accessor("joiningDate", {
     header: "Joining Date",
@@ -76,6 +80,14 @@ const columns = [
   }),
   columnHelper.accessor("email", {
     header: "Email",
+    cell: (info) => (
+      <a
+        href={`mailto:${info.getValue()}`}
+        className="text-blue-500 underline"
+      >
+        {info.getValue()}
+      </a>
+    ),
   }),
 ];
 
@@ -119,7 +131,7 @@ const Spreadsheet: React.FC = () => {
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext(),
+                          header.getContext()
                         )}
                   </th>
                 ))}
@@ -153,13 +165,13 @@ const Spreadsheet: React.FC = () => {
                           handleEdit(
                             row.id,
                             cell.column.id,
-                            cell.getValue() as string,
+                            cell.getValue() as string
                           )
                         }
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext(),
+                          cell.getContext()
                         )}
                       </div>
                     )}
