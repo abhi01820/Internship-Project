@@ -1,71 +1,43 @@
-# React + TypeScript + Vite
+# 🚀 Spreadsheet Management UI – Inspired by Google Sheets
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a feature-rich spreadsheet-style web application built with React, TypeScript, and Tailwind CSS. Designed to reflect the user experience of tools like Google Sheets, this project demonstrates real-time interactivity, modular UI architecture, and attention to usability.
 
-Currently, two official plugins are available:
+## 🔥 Why This Project Matters
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I developed this app to showcase my full-stack readiness and frontend engineering strength. The codebase demonstrates my skills in building scalable components, intuitive UX interactions, and responsive layouts — all using modern web technologies and clean, reusable code patterns.
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 📊 Editable spreadsheet table powered by @tanstack/react-table
+- 📌 Sticky header and toolbar for persistent context
+- 🔍 Search bar with inline filtering experience
+- 🧭 Sidebar navigation with clean icon layout
+- 🧰 Toolbar actions: Sort, Filter, Hide fields, Cell view modes
+- 🔔 Notification bell with unread indicator animation
+- 📤 Import, Export, Send, and Share buttons
+- 📂 Footer tabs: All Orders, Pending, Reviewed, Arrived
+- ➕ “+” button to add new sheets or views (expandable in future)
+- 📱 Fully responsive design built with Tailwind CSS
 
-```js
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- ⚛️ React + TypeScript — component-based UI architecture
+- 🎨 Tailwind CSS — utility-first responsive design
+- 📊 @tanstack/react-table — advanced table rendering and performance
+- 🧩 react-icons — for dynamic toolbar and UI icons
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+## 📁 Project Structure
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+src/
+├── components/
+│ ├── Header.tsx # Sticky top bar with title, search, profile
+│ ├── Toolbar.tsx # Tools like Sort, Filter, Export etc.
+│ ├── Sidebar.tsx # Navigation drawer
+│ ├── FooterTabs.tsx # Google-style footer navigation
+│ ├── TabSwitcher.tsx # Top tab category switching
+│ ├── Spreadsheet.tsx # Main editable data grid
+│ ├── NotificationBell.tsx # Bell icon with unread indicator
+│ └── StatusChip.tsx # Color-coded status labels
+└── App.tsx
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
 
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
-
-"# Internship-Project"
