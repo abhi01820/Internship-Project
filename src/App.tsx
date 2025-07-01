@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Toolbar from "./components/Toolbar";
 import TabSwitcher from "./components/TabSwitcher";
 import Spreadsheet from "./components/Spreadsheet";
+import FooterTabs from "./components/FooterTabs";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Toolbar />
         <TabSwitcher />
         <Spreadsheet />
+        <FooterTabs/>
       </div>
     </div>
   );
