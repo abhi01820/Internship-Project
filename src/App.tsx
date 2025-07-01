@@ -1,7 +1,6 @@
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Toolbar from "./components/Toolbar";
-import ToolbarActions from "./components/ToolbarActions";
 import TabSwitcher from "./components/TabSwitcher";
 import HeaderSection from "./components/HeaderSection";
 import Spreadsheet from "./components/Spreadsheet";
@@ -16,7 +15,6 @@ function App() {
         {/* Fixed Top Section */}
         <Header />
         <Toolbar />
-        <ToolbarActions />
         <TabSwitcher />
         <HeaderSection />
 
