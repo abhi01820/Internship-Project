@@ -5,6 +5,8 @@ import TabSwitcher from "./components/TabSwitcher";
 import Spreadsheet from "./components/Spreadsheet";
 import FooterTabs from "./components/FooterTabs";
 import HeaderSection from "./components/HeaderSection";
+import ToolbarActions from "./components/ToolbarActions";
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       <div className="flex-1">
         <Header />
         <Toolbar />
+        <ToolbarActions/>
         <TabSwitcher />
         <HeaderSection />
         <Spreadsheet />
