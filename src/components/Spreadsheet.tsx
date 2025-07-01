@@ -20,38 +20,20 @@ type Employee = {
   email: string;
 };
 
-const defaultData: Employee[] = [
-  {
-    id: 1,
-    name: "Abhij",
-    department: "Engineering",
-    role: "Frontend Developer",
-    status: "In-process",
-    joiningDate: "2024-01-15",
-    location: "Hyderabad",
-    email: "abhij@example.com",
-  },
-  {
-    id: 2,
-    name: "Shekhar",
-    department: "Product",
-    role: "Product Manager",
-    status: "Need to start",
-    joiningDate: "2023-06-01",
-    location: "Bangalore",
-    email: "shekhar@example.com",
-  },
-  {
-    id: 3,
-    name: "Vinoothna",
-    department: "Design",
-    role: "UX Designer",
-    status: "Complete",
-    joiningDate: "2023-09-10",
-    location: "Delhi",
-    email: "vino@example.com",
-  },
-];
+
+const defaultData: Employee[] = Array.from({ length: 30 }, (_, i) => ({
+  id: i + 1,
+  name: i % 5 === 0 ? "Love Maggo" : i % 3 === 0 ? "Manish" : "J Janardhan",
+  department: ["Engineering", "Design", "Product", "HR", "Marketing"][i % 5],
+  role: ["Frontend Developer", "UX Designer", "Product Manager", "QA Engineer", "Data Analyst"][i % 5],
+  status: ["In-process", "Need to start", "Complete", "Blocked"][i % 4],
+  joiningDate: `2023-${(i % 12 + 1).toString().padStart(2, "0")}-15`,
+  location: ["Hyderabad", "Bangalore", "Mumbai", "Delhi", "Chennai"][i % 5],
+  email: `user${i + 1}@example.com`,
+}));
+
+
+
 
 const columnHelper = createColumnHelper<Employee>();
 
