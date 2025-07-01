@@ -1,20 +1,32 @@
 import React from "react";
-import Avatar from "./Avatar";
+import {
+  FiGrid,
+  FiEyeOff,
+  FiSliders,
+  FiFilter,
+  FiLayout,
+} from "react-icons/fi";
 
+const buttons = [
+  { label: "Tool bar", icon: <FiGrid /> },
+  { label: "Hide fields", icon: <FiEyeOff /> },
+  { label: "Sort", icon: <FiSliders /> },
+  { label: "Filter", icon: <FiFilter /> },
+  { label: "Cell view", icon: <FiLayout /> },
+];
 
 const Toolbar: React.FC = () => {
-  const buttons = ["Tool bar", "Hide fields", "Sort", "Filter", "Cell view"];
-
   return (
     <div className="flex justify-between items-center px-6 py-3 bg-white border-b sticky top-[64px] z-30">
       <div className="flex flex-wrap gap-2">
         {buttons.map((btn) => (
           <button
-            key={btn}
-            onClick={() => console.log(`${btn} clicked`)}
-            className="text-sm bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1.5 rounded-md border"
+            key={btn.label}
+            onClick={() => console.log(`${btn.label} clicked`)}
+            className="text-sm bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1.5 rounded-md border flex items-center gap-2"
           >
-            {btn}
+            {btn.icon}
+            {btn.label}
           </button>
         ))}
       </div>
@@ -31,7 +43,9 @@ const Toolbar: React.FC = () => {
         >
           + New Action
         </button>
-        <Avatar name="John Doe" src="https://i.pravatar.cc/150?img=3" />
+        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center text-white font-semibold text-sm shadow">
+          JD
+        </div>
       </div>
     </div>
   );
