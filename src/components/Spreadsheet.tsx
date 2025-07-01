@@ -98,9 +98,9 @@ const Spreadsheet: React.FC = () => {
   });
 
   return (
-    <div className="p-6">
+    <div className="p-1">
       <div className="overflow-x-auto border rounded-lg shadow bg-white">
-        <table className="min-w-full table-auto text-sm">
+        <table className="min-w-full table-auto text-sm border-separate border-spacing-0">
           <thead className="bg-gray-100">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>

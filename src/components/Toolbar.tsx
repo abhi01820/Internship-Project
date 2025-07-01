@@ -61,13 +61,7 @@ const Toolbar: React.FC = () => {
           placeholder="Search within sheet"
           className="px-3 py-1.5 border text-sm rounded-md outline-none focus:ring focus:ring-primary"
         />
-
-        <button
-          className="bg-green-500 hover:bg-green-600 text-white text-sm font-medium px-4 py-2 rounded-md"
-          onClick={() => console.log("New Action clicked")}
-        >
-          + New Action
-        </button>
+        
 
         <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center text-white font-semibold text-sm shadow">
           JD
