@@ -26,18 +26,4 @@ I developed this app to showcase my full-stack readiness and frontend engineerin
 - 📊 @tanstack/react-table — advanced table rendering and performance
 - 🧩 react-icons — for dynamic toolbar and UI icons
 
-## 📁 Project Structure
-
-src/
-├── components/
-│ ├── Header.tsx # Sticky top bar with title, search, profile
-│ ├── Toolbar.tsx # Tools like Sort, Filter, Export etc.
-│ ├── Sidebar.tsx # Navigation drawer
-│ ├── FooterTabs.tsx # Google-style footer navigation
-│ ├── TabSwitcher.tsx # Top tab category switching
-│ ├── Spreadsheet.tsx # Main editable data grid
-│ ├── NotificationBell.tsx # Bell icon with unread indicator
-│ └── StatusChip.tsx # Color-coded status labels
-└── App.tsx
-
 
