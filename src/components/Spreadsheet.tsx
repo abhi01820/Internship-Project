@@ -7,8 +7,8 @@ import {
 } from "@tanstack/react-table";
 import StatusChip from "./StatusChip";
 import AvatarGroup from "./AvatarGroup";
-// Types
 
+// Types
 type Employee = {
   id: number;
   name: string;
@@ -18,8 +18,8 @@ type Employee = {
   joiningDate: string;
   location: string;
   email: string;
+  add?: string;
 };
-
 
 const defaultData: Employee[] = Array.from({ length: 30 }, (_, i) => ({
   id: i + 1,
@@ -30,10 +30,8 @@ const defaultData: Employee[] = Array.from({ length: 30 }, (_, i) => ({
   joiningDate: `2023-${(i % 12 + 1).toString().padStart(2, "0")}-15`,
   location: ["Hyderabad", "Bangalore", "Mumbai", "Delhi", "Chennai"][i % 5],
   email: `user${i + 1}@example.com`,
+  add: "",
 }));
-
-
-
 
 const columnHelper = createColumnHelper<Employee>();
 
@@ -71,6 +69,15 @@ const columns = [
       </a>
     ),
   }),
+  columnHelper.accessor("add", {
+    header: () => (
+      <div className="flex items-center gap-1">
+        <span className="text-lg font-bold">+</span>
+        <span className="text-sm font-semibold">Add</span>
+      </div>
+    ),
+    cell: () => <span className="text-gray-400 italic">---</span>,
+  }),
 ];
 
 const Spreadsheet: React.FC = () => {
@@ -99,15 +106,15 @@ const Spreadsheet: React.FC = () => {
 
   return (
     <div className="p-1">
-      <div className="overflow-x-auto border rounded-lg shadow bg-white">
+      <div className="overflow-x-auto border rounded-lg shadow bg-white max-h-[70vh] overflow-y-auto">
         <table className="min-w-full table-auto text-sm border-separate border-spacing-0">
-          <thead className="bg-gray-100">
+          <thead className="bg-gray-100 sticky top-0 z-10">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b"
+                    className="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b border-dotted border-r border-gray-200 bg-gray-100"
                   >
                     {header.isPlaceholder
                       ? null
@@ -126,7 +133,7 @@ const Spreadsheet: React.FC = () => {
                 {row.getVisibleCells().map((cell) => (
                   <td
                     key={cell.id}
-                    className="px-4 py-2 whitespace-nowrap text-sm text-gray-800"
+                    className="px-4 py-2 whitespace-nowrap text-sm text-gray-800 border-r border-dotted border-gray-200"
                   >
                     {editingCell?.rowId === row.id &&
                     editingCell?.colId === cell.column.id ? (
