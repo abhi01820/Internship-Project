@@ -6,7 +6,7 @@ const TabSwitcher: React.FC = () => {
   const [activeTab, setActiveTab] = useState("All");
 
   return (
-    <div className="flex gap-2 border-b px-6 pt-4 bg-white sticky top-[64px] z-40">
+    <div className="flex gap-2 border-b px-6 pt-4 bg-white sticky top-[108px] z-30">
       {tabs.map((tab) => (
         <button
           key={tab}
