@@ -6,7 +6,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import StatusChip from "./StatusChip";
-
+import AvatarGroup from "./AvatarGroup";
 // Types
 
 type Employee = {
@@ -182,6 +182,7 @@ const Spreadsheet: React.FC = () => {
           </tbody>
         </table>
       </div>
+      <AvatarGroup />
     </div>
   );
 };
