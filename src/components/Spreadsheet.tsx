@@ -50,7 +50,6 @@ const defaultData: Employee[] = [
   },
 ];
 
-
 const columnHelper = createColumnHelper<Employee>();
 
 const columns = [
@@ -80,8 +79,24 @@ const columns = [
   }),
 ];
 
-
 const Spreadsheet: React.FC = () => {
+  const [editingCell, setEditingCell] = React.useState<{
+    rowId: string;
+    colId: string;
+  } | null>(null);
+
+  const [editValue, setEditValue] = React.useState("");
+
+  const handleEdit = (rowId: string, colId: string, value: string) => {
+    setEditingCell({ rowId, colId });
+    setEditValue(value);
+  };
+
+  const handleSave = () => {
+    console.log("Edited:", editingCell, "New Value:", editValue);
+    setEditingCell(null);
+  };
+
   const table = useReactTable({
     data: defaultData,
     columns,
@@ -90,42 +105,72 @@ const Spreadsheet: React.FC = () => {
 
   return (
     <div className="p-6">
-  <div className="overflow-x-auto border rounded-lg shadow bg-white">
-    <table className="min-w-full table-auto text-sm">
-      <thead className="bg-gray-100">
-        {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header) => (
-              <th
-                key={header.id}
-                className="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b"
-              >
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(header.column.columnDef.header, header.getContext())}
-              </th>
+      <div className="overflow-x-auto border rounded-lg shadow bg-white">
+        <table className="min-w-full table-auto text-sm">
+          <thead className="bg-gray-100">
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <th
+                    key={header.id}
+                    className="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b"
+                  >
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
+                  </th>
+                ))}
+              </tr>
             ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
-        {table.getRowModel().rows.map((row) => (
-          <tr key={row.id} className="hover:bg-gray-50 transition">
-            {row.getVisibleCells().map((cell) => (
-              <td
-                key={cell.id}
-                className="px-4 py-2 whitespace-nowrap text-sm text-gray-800"
-              >
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {table.getRowModel().rows.map((row) => (
+              <tr key={row.id} className="hover:bg-gray-50 transition">
+                {row.getVisibleCells().map((cell) => (
+                  <td
+                    key={cell.id}
+                    className="px-4 py-2 whitespace-nowrap text-sm text-gray-800"
+                  >
+                    {editingCell?.rowId === row.id &&
+                    editingCell?.colId === cell.column.id ? (
+                      <input
+                        className="border p-1 w-full text-sm"
+                        value={editValue}
+                        onChange={(e) => setEditValue(e.target.value)}
+                        onBlur={handleSave}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") handleSave();
+                        }}
+                        autoFocus
+                      />
+                    ) : (
+                      <div
+                        className="cursor-pointer"
+                        onClick={() =>
+                          handleEdit(
+                            row.id,
+                            cell.column.id,
+                            cell.getValue() as string,
+                          )
+                        }
+                      >
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
+                      </div>
+                    )}
+                  </td>
+                ))}
+              </tr>
             ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-</div>
-
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 
