@@ -9,7 +9,10 @@ const sidebarItems = [
 const Sidebar: React.FC = () => {
   return (
     <aside className="h-screen w-20 md:w-56 bg-white border-r shadow-sm flex flex-col items-center py-6 sticky top-0">
-      <h2 className="hidden md:block font-bold text-xl mb-10">Logo</h2>
+      <h2 className="hidden md:block font-bold text-xl mb-10">
+        <img src="/logo.svg" alt="Logo" className="h-8" />
+      </h2>
+
       <nav className="flex flex-col gap-6 w-full">
         {sidebarItems.map((item) => (
           <button

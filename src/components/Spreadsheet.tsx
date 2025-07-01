@@ -61,20 +61,7 @@ const columns = [
   }),
   columnHelper.accessor("name", {
     header: "Name",
-    cell: (info) => {
-      const value = info.getValue();
-      let className = "font-medium";
-
-      if (value.includes("Love")) {
-        className += " bg-green-200 text-green-800 px-2 py-1 rounded";
-      } else if (value.includes("Abhij")) {
-        className += " bg-yellow-200 text-yellow-800 px-2 py-1 rounded";
-      }
-
-      return <span className={className}>{value}</span>;
-    },
   }),
-
   columnHelper.accessor("department", {
     header: "Department",
   }),
@@ -94,7 +81,10 @@ const columns = [
   columnHelper.accessor("email", {
     header: "Email",
     cell: (info) => (
-      <a href={`mailto:${info.getValue()}`} className="text-blue-500 underline">
+      <a
+        href={`mailto:${info.getValue()}`}
+        className="text-blue-500 underline"
+      >
         {info.getValue()}
       </a>
     ),
@@ -154,11 +144,7 @@ const Spreadsheet: React.FC = () => {
                 {row.getVisibleCells().map((cell) => (
                   <td
                     key={cell.id}
-                    className={`px-4 py-2 whitespace-nowrap text-sm text-gray-800 ${
-                      cell.column.id === "status"
-                        ? "border-r-4 border-yellow-400"
-                        : ""
-                    }`}
+                    className="px-4 py-2 whitespace-nowrap text-sm text-gray-800"
                   >
                     {editingCell?.rowId === row.id &&
                     editingCell?.colId === cell.column.id ? (
