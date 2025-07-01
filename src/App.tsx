@@ -1,7 +1,8 @@
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Spreadsheet from "./components/Spreadsheet";
+import Toolbar from "./components/Toolbar";
 import TabSwitcher from "./components/TabSwitcher";
+import Spreadsheet from "./components/Spreadsheet";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Sidebar />
       <div className="flex-1">
         <Header />
+        <Toolbar />
         <TabSwitcher />
         <Spreadsheet />
       </div>
