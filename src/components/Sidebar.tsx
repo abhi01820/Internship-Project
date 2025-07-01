@@ -8,20 +8,22 @@ const sidebarItems = [
 
 const Sidebar: React.FC = () => {
   return (
-    <aside className="h-screen w-20 md:w-56 bg-white border-r shadow-sm flex flex-col items-center py-6 sticky top-0">
-      <h2 className="hidden md:block font-bold text-xl mb-10">
-        <img src="/logo.svg" alt="Logo" className="h-8" />
-      </h2>
+    <aside className="h-screen w-20 md:w-56 bg-white border-r shadow-md flex flex-col items-center md:items-start py-6 px-2 sticky top-0">
+      {/* Logo */}
+      <div className="w-full flex justify-center md:justify-start px-2 mb-12">
+        <img src="/logo.svg" alt="Logo" className="h-8 md:h-10" />
+      </div>
 
-      <nav className="flex flex-col gap-6 w-full">
+      {/* Navigation */}
+      <nav className="flex flex-col gap-3 w-full">
         {sidebarItems.map((item) => (
           <button
             key={item.label}
             onClick={() => console.log(`${item.label} clicked`)}
-            className="flex items-center gap-3 text-gray-600 hover:text-primary px-4 py-2 transition-all w-full text-left"
+            className="flex items-center gap-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-lg transition-all duration-200 w-full"
           >
-            <span className="text-xl">{item.icon}</span>
-            <span className="hidden md:inline text-sm font-medium">
+            <span className="text-2xl">{item.icon}</span>
+            <span className="hidden md:inline text-sm font-medium tracking-wide">
               {item.label}
             </span>
           </button>

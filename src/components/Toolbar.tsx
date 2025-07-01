@@ -28,7 +28,7 @@ const rightActions = [
 
 const Toolbar: React.FC = () => {
   return (
-    <div className="flex flex-wrap justify-between items-center px-6 py-3 bg-white border-b sticky top-[64px] z-30 shadow-sm">
+    <div className="flex flex-wrap justify-between items-center px-2 py-1 bg-white border-b sticky top-[6px] z-30 shadow-sm">
       {/* Left Buttons */}
       <div className="flex flex-wrap gap-2">
         {leftButtons.map((btn) => (
@@ -42,7 +42,9 @@ const Toolbar: React.FC = () => {
           </button>
         ))}
       </div>
-      {/* Import/Export/Send/Share */}
+
+      {/* Right Actions aligned right */}
+      <div className="flex gap-2 ml-auto">
         {rightActions.map((action) => (
           <button
             key={action.label}
@@ -53,21 +55,6 @@ const Toolbar: React.FC = () => {
             {action.label}
           </button>
         ))}
-
-      {/* Right Section */}
-      <div className="flex items-center gap-3 mt-2 sm:mt-0 flex-wrap justify-end">
-        <input
-          type="text"
-          placeholder="Search within sheet"
-          className="px-3 py-1.5 border text-sm rounded-md outline-none focus:ring focus:ring-primary"
-        />
-        
-
-        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center text-white font-semibold text-sm shadow">
-          JD
-        </div>
-
-        
       </div>
     </div>
   );

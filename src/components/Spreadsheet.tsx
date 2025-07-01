@@ -114,7 +114,7 @@ const Spreadsheet: React.FC = () => {
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b border-dotted border-r border-gray-200 bg-gray-100"
+                    className="px-4 py-1 text-left text-xs font-bold text-gray-600 uppercase tracking-wider border-b border-dotted border-r border-gray-200 bg-gray-100"
                   >
                     {header.isPlaceholder
                       ? null
